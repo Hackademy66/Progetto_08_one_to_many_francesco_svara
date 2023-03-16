@@ -1,43 +1,8 @@
 <x-layout>
 <div class="container-fluid px-0 home">
-  <!-- Messages --> 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-          @if (session()->has('sellUpdated'))
-            <div class="alert alert-success alert-dismissible fade show border-start border-end" role="alert">
-              {{session('sellUpdated')}}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          @endif
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-12">
-          @if (session()->has('tradeUpdated'))
-            <div class="alert alert-success alert-dismissible fade show border-start border-end" role="alert">
-              {{ session('tradeUpdated') }}
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-          @endif
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-12">
-        @if (session()->has('accessDenied'))
-          <div class="alert alert-danger alert-dismissible fade show border-start border-end" role="alert">
-            {{session('accessDenied')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-        @endif
-      </div>
-    </div>
-  </div>
-  <!-- End Messages -->
+  
+  <x-messages />
+
   <div class="row justify-content-center">
     <div class="container px-5">
       <div class="row no-gutters pt-5">

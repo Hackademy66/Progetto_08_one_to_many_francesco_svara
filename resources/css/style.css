@@ -110,9 +110,16 @@ p a h3 div {
 .chevron i {
     font-size: 36px;
     color: var(--text-title-color);
-  }
-  
-  .scrollArrow {
+}
+
+.avatar-image {
+    width: 200px; 
+    border: 3px solid white;
+    border-radius: 50%; 
+    cursor: pointer;
+}
+
+.scrollArrow {
     position: absolute;
     top: 50%;
     left: 0%;
@@ -124,7 +131,7 @@ p a h3 div {
     animation-duration: 2s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-  }
+}
   
   @keyframes scrollDown{
     from {

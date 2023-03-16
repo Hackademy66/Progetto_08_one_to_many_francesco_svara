@@ -32,6 +32,14 @@
         </li>
         @endauth
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{route('agent.index')}}">Agents</a>
+        </li>
+        @auth
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{route('agent.create')}}">Create Agent</a>
+        </li>
+        @endauth
+        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('contact')}}">Contact Us</a>
         </li>
       </ul>

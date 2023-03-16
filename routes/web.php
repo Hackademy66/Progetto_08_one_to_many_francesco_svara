@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\AgentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,12 @@ Route::get('/trade/show/{trade}', [TradeController::class,'show'])->name('trade.
 Route::get('/trade/edit/{trade}', [TradeController::class, 'edit'])->name('trade.edit');
 Route::put('/trade/update/{trade}', [TradeController::class, 'update'])->name('trade.update');
 Route::delete('/trade/destroy/{trade}', [TradeController::class, 'destroy'])->name('trade.destroy');
+
+// Routes Agent
+Route::get('/agent/index', [AgentController::class, 'index'])->name('agent.index');
+Route::get('/agent/create', [AgentController::class, 'create'])->name('agent.create');
+Route::post('/agent/store', [AgentController::class, 'store'])->name('agent.store');
+Route::get('/agent/show/{agent}', [AgentController::class,'show'])->name('agent.show');
+Route::get('/agent/edit/{agent}', [AgentController::class, 'edit'])->name('agent.edit');
+Route::put('/agent/update/{agent}', [AgentController::class, 'update'])->name('agent.update');
+Route::delete('/agent/destroy/{agent}', [AgentController::class, 'destroy'])->name('agent.destroy');

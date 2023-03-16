@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agent;
 use App\Models\Trade;
 use Illuminate\Http\Request;
 use App\Http\Requests\TradeRequest;
@@ -28,6 +29,8 @@ class TradeController extends Controller
      */
     public function create()
     {
+        $agents = Agent::all();
+        
         return view('trade.create');
     }
 
@@ -82,9 +85,7 @@ class TradeController extends Controller
                 'name' => $request->name,
                 'price' => $request->price,
             ]);
-
         }
-
         return redirect(route('homepage'))->with('tradeUpdated', "You have successfully updated the announcement.");
     }
 

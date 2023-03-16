@@ -1,8 +1,8 @@
 <x-layout>
 
 <div class="sale-create text-white">
-    <div class="container-fluid ">
-        <div class="row justify-content-center">
+    <div class="container-fluid pb-5">
+        <div class="row justify-content-center pb-5">
             <div class="col-12 col-md-8 text-center">
                 <h1>REGISTRATION</h1>
             </div>
@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="container-fluid">
+    <div class="container-fluid pb-5">
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
                 <form class="p-lg-5 shadow" method="POST" action="{{route('register')}}">

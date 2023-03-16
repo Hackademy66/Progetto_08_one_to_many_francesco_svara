@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Sell;
+use App\Models\Agent;
 use Illuminate\Http\Request;
 use App\Http\Requests\SellRequest;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,9 @@ class SellController extends Controller
      */
     public function create()
     {
-        return view('sell.create');
+        $agents = Agent::all();
+        
+        return view('sell.create', compact('agents'));
     }
 
     /**
@@ -94,6 +97,6 @@ class SellController extends Controller
     public function destroy(Sell $sell)
     {
         $sell->delete();
-        return redirect(route('homepage'))->with('tradeDeleted', "The announcement has been deleted.");
+        return redirect(route('homepage'))->with('sellDeleted', "The announcement has been deleted.");
     }
 }
