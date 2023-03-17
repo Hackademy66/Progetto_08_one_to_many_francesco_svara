@@ -6,6 +6,7 @@ use App\Models\Sell;
 use App\Models\Agent;
 use App\Models\Trade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AgentController extends Controller
 {
@@ -23,7 +24,9 @@ class AgentController extends Controller
      */
     public function create()
     {
-
+        if($agent->user_id != Auth::id()){
+            return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
+        }
         $sells = Sell::all();
         $trades = Trade::all();
         
@@ -62,9 +65,9 @@ class AgentController extends Controller
      */
     public function edit(Agent $agent)
     {
-        // if($agent->user_id != Auth::id()){
-        //     return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
-        // }
+        if($agent->user_id != Auth::id()){
+            return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
+        }
         $sells = Sell::all();
         $trades = Trade::all();
 

@@ -38,7 +38,7 @@
         <div class="col-12 col-md-4 pb-5">
             <div class="card shadow">
                 @if(!$trade->cover)
-                <img src="https://picsum.photos/300/200" class="img-card" alt="...">
+                <img src="https://picsum.photos/300/200" class="img-card object-fit-cover" alt="...">
                 @else
                 <img src="{{Storage::url($trade->cover)}}" class="img-fluid" alt="...">
                 @endif
@@ -81,7 +81,7 @@
         <div class="col-12 col-md-4 pb-5">
             <div class="card shadow">
                 @if(!$sell->cover)
-                <img src="https://picsum.photos/300/200" class="img-card" alt="...">
+                <img src="https://picsum.photos/300/200" class="img-card object-fit-cover" alt="...">
                 @else
                 <img src="{{Storage::url($sell->cover)}}" class="img-fluid" alt="...">
                 @endif
@@ -126,9 +126,9 @@
                 <div class="col-12 col-md-4 pb-5">
                     <div class="card shadow">
                         @if(!$agent->cover)
-                        <img src="https://picsum.photos/300/200" class="img-card" alt="...">
+                        <img src="https://picsum.photos/300/200" class="img-card object-fit-cover" alt="...">
                         @else
-                        <img src="{{Storage::url($agent->cover)}}" class="img-fluid" alt="...">
+                        <img src="{{Storage::url($agent->cover)}}" class="img-card object-fit-cover" alt="...">
                         @endif
                         <div class="card-body p-2">
                             <h3>Name:</h3><p>{{$agent->name}}</p>
