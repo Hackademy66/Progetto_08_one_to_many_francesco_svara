@@ -11,7 +11,15 @@
                     @method('put')
                     <input type="file" name="avatar" id="avatar-input" style="display:none;" onchange="document.getElementById('avatar-form').submit();">
                 </form>
-            <h1 class="ms-5">{{Auth::user()->name}}</h1>
+                
+                <div class="col-12 col-md-6">
+                    <h1 class="ms-5">{{Auth::user()->name}}</h1>
+                    <form method="POST" action="{{route('user.destroy')}}">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger ms-5 mt-3">Delete Account</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -104,47 +112,51 @@
     </div>
 </div>
 
-<div class="container py-5">
-    <div class="row">
-        <div class="col-12 col-md-4 fw-bold fs-5 py-5">
-            <h3>Your Agents</h3>
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        @if(count(Auth::user()->agents))
-        @foreach(Auth::user()->agents as $agent)
-        <div class="col-12 col-md-4 pb-5">
-            <div class="card">
-                @if(!$agent->cover)
-                <img src="https://picsum.photos/300/200" class="img-card" alt="...">
-                @else
-                <img src="{{Storage::url($agent->cover)}}" class="img-card" alt="...">
-                @endif
-                <div class="card-body p-2">
-                    <h3>{{$agent->name}}</h3>
-                    <h3>{{$agent->email}}</h3>
-                    <form action="{{route('agent.show', $agent)}}" method="GET" class="d-inline-block">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-primary">View</button>
-                    </form>
-                    @if(Auth::user() && Auth::id() == $agent->user_id)
-                    <a href="{{ route('agent.edit', $agent) }}" class="btn btn-outline-dark">Edit</a>
-                        <form action="{{ route('agent.destroy', $agent) }}" method="POST" class="d-inline-block">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="btn btn-outline-danger">Delete</button>
-                        </form>
-                    @endif
+@auth
+    @if(auth()->user()->id == 1)
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md-4 fw-bold fs-5 py-5">
+                    <h3>Your Agents</h3>
                 </div>
             </div>
-        </div>
-        @endforeach
-        @else
-            <div class="col-12 ms-5 ps-5">
-            You haven't posted any advertisement yet.
+            <div class="row justify-content-center">
+                @if(count(Auth::user()->agents))
+                @foreach(Auth::user()->agents as $agent)
+                <div class="col-12 col-md-4 pb-5">
+                    <div class="card">
+                        @if(!$agent->cover)
+                        <img src="https://picsum.photos/300/200" class="img-card" alt="...">
+                        @else
+                        <img src="{{Storage::url($agent->cover)}}" class="img-card" alt="...">
+                        @endif
+                        <div class="card-body p-2">
+                            <h3>{{$agent->name}}</h3>
+                            <h3>{{$agent->email}}</h3>
+                            <form action="{{route('agent.show', $agent)}}" method="GET" class="d-inline-block">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-primary">View</button>
+                            </form>
+                            @if(Auth::user() && Auth::id() == $agent->user_id)
+                            <a href="{{ route('agent.edit', $agent) }}" class="btn btn-outline-dark">Edit</a>
+                                <form action="{{ route('agent.destroy', $agent) }}" method="POST" class="d-inline-block">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                </form>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @else
+                    <div class="col-12 ms-5 ps-5">
+                    You haven't posted any agent yet.
+                    </div>
+                @endif
             </div>
-        @endif
-    </div>
-</div>
+        </div>
+    @endif
+@endauth
 
 </x-layout>

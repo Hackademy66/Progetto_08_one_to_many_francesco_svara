@@ -44,21 +44,4 @@ class PublicController extends Controller
         
         return redirect(route('contact'))->with('status', 'Email inviata! Grazie!');
     }
-
-    public function profile() {
-        // metodo 1: sfruttare la relazione
-        return view('profile');
-        // metodo 2: sfruttare una query al database
-        // $sells = Sell::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
-        // return view('profile', compact('sells'));
-        // $trades = Trade::where('user_id', Auth::id())->orderBy('created_at', 'DESC')->get();
-        // return view('profile', compact('trades'));
-    }
-
-    public  function changeAvatar(User $user, Request $request) {
-        $user->update([
-          'avatar' => $request->file('avatar')->store('public/avatars')
-        ]);
-        return redirect()->back();
-    }
 }

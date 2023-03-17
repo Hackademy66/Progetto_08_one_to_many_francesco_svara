@@ -1,23 +1,29 @@
 window.addEventListener('scroll', function() {
-  var navbar = document.querySelector('.navbar');
-  var navLinks = document.querySelectorAll('.nav-link');
-  var logBtn = document.querySelector('#btn-login');
-  var signUpBtn = document.querySelector('#btn-sign-up');
+  let navbar = document.querySelector('.navbar');
+  let navLinks = document.querySelectorAll('.nav-link');
+  const button1 = document.querySelector('#myButton1');
+  const button2 = document.querySelector('#myButton2');
+  const button3 = document.querySelector('#myButton3');
+  const button4 = document.querySelector('#myButton4');
   
   if (window.scrollY > 0) {
     navbar.classList.add('bg-white');
     navbar.classList.remove('bg-transparent');
     navbar.classList.add('navbar-light');
     navbar.classList.remove('navbar-dark');
+    if (button1 && button2) {
+      button1.classList.replace('btn-outline-light', 'btn-outline-dark');
+      button2.classList.replace('btn-outline-light', 'btn-outline-dark');
+    }
+    if (button3 && button4) {
+      button3.classList.replace('btn-outline-light', 'btn-outline-dark');
+      button4.classList.replace('btn-outline-light', 'btn-outline-dark');
+    }
     navbar.style.transition = 'all 1s'; 
     navLinks.forEach(function(link) {
       link.classList.add('text-black');
       link.classList.remove('text-white');
     });
-    logBtn.classList.remove('btn-outline-white');
-    logBtn.classList.add('btn-outline-dark');
-    signUpBtn.classList.remove('btn-outline-white');
-    signUpBtn.classList.add('btn-outline-dark');
   } else {
     navbar.classList.remove('bg-white');
     navbar.classList.add('bg-transparent');
@@ -27,9 +33,13 @@ window.addEventListener('scroll', function() {
       link.classList.remove('text-black');
       link.classList.add('text-white');
     });
-    logBtn.classList.add('btn-outline-white');
-    logBtn.classList.remove('btn-outline-dark');
-    signUpBtn.classList.add('btn-outline-white');
-    signUpBtn.classList.remove('btn-outline-dark');
+    if (button1 && button2) {
+      button1.classList.replace('btn-outline-dark', 'btn-outline-light');
+      button2.classList.replace('btn-outline-dark', 'btn-outline-light');
+    }
+    if (button3 && button4) {
+      button3.classList.replace('btn-outline-dark', 'btn-outline-light');
+      button4.classList.replace('btn-outline-dark', 'btn-outline-light');
+    }
   }
 });

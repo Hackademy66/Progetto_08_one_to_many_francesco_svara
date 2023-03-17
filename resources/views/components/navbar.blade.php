@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top navbar-cs">
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top navbar-cs">
   <div class="container-fluid d-flex justify-content-between">
     <a class="navbar-brand ms-4" href="{{route('homepage')}}">Logo</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navLeft" aria-controls="navLeft" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,7 +6,6 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navRight">
-      
     </div>
 
     <!-- container tendina - nascosto su desktop -->
@@ -35,9 +34,11 @@
           <a class="nav-link active" aria-current="page" href="{{route('agent.index')}}">Agents</a>
         </li>
         @auth
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{route('agent.create')}}">Create Agent</a>
-        </li>
+          @if(auth()->user()->id == 1)
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('agent.create')}}">Create Agent</a>
+          </li>
+          @endif
         @endauth
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('contact')}}">Contact Us</a>
@@ -47,12 +48,12 @@
               <!-- Sezione a destra della navbar, all'interno di un div separato -->
           <div class="d-flex align-items-center">
             @auth
-            <a id="btn-sign-up" class="btn btn-sm btn-outline-light me-3 log-btn" href="{{route('profile')}}">Profile</a>
+            <a id="myButton1" class="btn btn-sm btn-outline-light me-3 btn-log" href="{{route('profile')}}">Profile</a>
             <form id="form-logout" method="POST" action="{{route('logout')}}" class="d-none">@Csrf</form>
-            <button id="btn-login" class="btn btn-sm btn-outline-light me-3 log-btn" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</button>
+            <button id="myButton2" class="btn btn-sm btn-outline-light me-3 btn-log" onclick="event.preventDefault(); document.querySelector('#form-logout').submit();">Logout</button>
             @else
-            <a id="btn-sign-up" class="btn btn-sm btn-outline-light me-3 log-btn" href="{{route('register')}}">Register</a>
-            <a id="btn-login" class="btn btn-sm btn-outline-light log-btn" href="{{route('login')}}"><i class="bi bi-person-fill"></i> Login</a>
+            <a id="myButton3" class="btn btn-sm btn-outline-light me-3 btn-log" href="{{route('register')}}">Register</a>
+            <a id="myButton4" class="btn btn-sm btn-outline-light btn-log" href="{{route('login')}}"><i class="bi bi-person-fill"></i>Login</a>
             @endAuth
           </div>
         </div>

@@ -2,9 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SellController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\AgentController;
 use App\Http\Controllers\TradeController;
 use App\Http\Controllers\PublicController;
-use App\Http\Controllers\AgentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,11 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/about', [PublicController::class, 'about'])->name('about');
 Route::get('/contact', [PublicController::class, 'contact'])->name('contact');
 Route::post('/contact-submit', [PublicController::class, 'contact_submit'])->name('contact-submit');
-Route::get('/profile', [PublicController::class, 'profile'])->name('profile')->middleware('auth');
-Route::put('/profile/avatar/{user}', [PublicController::class, 'changeAvatar'])->name('changeAvatar');
+
+// Routes User
+Route::get('/profile/{user?}', [UserController::class, 'profile'])->name('profile')->middleware('auth');
+Route::put('/profile/avatar/{user}', [UserController::class, 'changeAvatar'])->name('changeAvatar');
+Route::delete('/user/destroy', [UserController::class, 'destroy'])->name('user.destroy');
 
 // Routes Sell
 Route::get('/sell/index', [SellController::class, 'index'])->name('sell.index');

@@ -2,7 +2,7 @@
 
 <div class="sale-create text-white">
     <div class="container-fluid pb-5">
-        <div class="row justify-content-center pb-5">
+        <div class="row justify-content-center">
             <div class="col-12 col-md-8 text-center">
                 <h1>REGISTRATION</h1>
             </div>
@@ -11,8 +11,8 @@
 
 
     <div class="container-fluid pb-5">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6">
+        <div class="row justify-content-center pb-5">
+            <div class="col-12 col-md-6 pb-5">
                 <form class="p-lg-5 shadow" method="POST" action="{{route('register')}}">
                     @if($errors->any())
                         <div class="alert alert-danger">
@@ -40,7 +40,7 @@
                         <label for="password_confirmation">Password Confirmation</label>
                         <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-light mt-5">Send</button>
+                    <button type="submit" class="btn btn-light mt-5">Submit</button>
                 </form>
             </div>
         </div>
