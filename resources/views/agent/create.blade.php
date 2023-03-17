@@ -32,7 +32,7 @@
                 @csrf
                 <div class="form-group mb-3">
                     <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Title here...">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Name here...">
                 </div>
                 <div class="form-group mb-3">
                     <label for="phone">Phone</label>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
-                    <input type="text" name="email" class="form-control" id="email" placeholder="Title here...">
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Email here...">
                 </div>
                 <div class="mb-3">
                     <label for="sell" class="form-label">Available Sale Homes</label>

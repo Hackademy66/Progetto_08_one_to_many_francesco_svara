@@ -18,17 +18,17 @@
           <a class="nav-link active" aria-current="page" href="{{route('trade.index')}}">Rent</a>
         </li>
         @auth
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{route('trade.create')}}">Create Rent</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('trade.create')}}">Create Rent</a>
+          </li>
         @endauth
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('sell.index')}}">Sale</a>
         </li>
         @auth
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{{route('sell.create')}}">Create Sale</a>
-        </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{{route('sell.create')}}">Create Sale</a>
+          </li>
         @endauth
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{{route('agent.index')}}">Agents</a>

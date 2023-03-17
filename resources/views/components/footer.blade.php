@@ -38,7 +38,7 @@
                 <div class="show_sub_result"></div>
               </div>
               <div class="col-5 col-lg-3">              
-                <button class="btn btn-primary rounded-elg button_subscribe" type="submit" name="submit" >Subscribe</button>
+                <button class="btn btn-light rounded-elg button_subscribe" type="submit" name="submit" >Subscribe</button>
               </div>
             </div>
             </form>

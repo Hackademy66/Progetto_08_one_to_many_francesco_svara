@@ -93,8 +93,6 @@ class SellController extends Controller
 
         }
         $sell->agents()->attach($request->agent);
-
-        $sell->agents()->attach($request->agent);
         return redirect(route('homepage'))->with('sellUpdated', "The announcement has been updated.");
     }
 

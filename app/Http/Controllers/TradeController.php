@@ -31,7 +31,7 @@ class TradeController extends Controller
     {
         $agents = Agent::all();
         
-        return view('trade.create');
+        return view('trade.create', compact('agents'));
     }
 
     /**
@@ -46,6 +46,7 @@ class TradeController extends Controller
             'description' => $request->description,
             'user_id' => Auth::user()->id,
         ]);
+        $trade->agents()->attach($request->agent);
         return redirect(route('homepage'))->with('tradeCreated', "You have successfully posted the advertisement.");
     }
 
@@ -54,7 +55,9 @@ class TradeController extends Controller
      */
     public function show(Trade $trade)
     {
-        return view('trade.show', compact('trade'));
+        $agent = Agent::all();
+
+        return view('trade.show', compact('trade', 'agent'));
     }
 
     /**
@@ -65,7 +68,9 @@ class TradeController extends Controller
         if($trade->user_id != Auth::id()){
             return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
         }
-        return view('trade.edit', compact('trade'));
+        $agents = Agent::all();
+
+        return view('trade.edit', compact('trade', 'agents'));
     }
 
     /**
@@ -86,6 +91,7 @@ class TradeController extends Controller
                 'price' => $request->price,
             ]);
         }
+        $trade->agents()->attach($request->agent);
         return redirect(route('homepage'))->with('tradeUpdated', "You have successfully updated the announcement.");
     }
 
@@ -94,7 +100,12 @@ class TradeController extends Controller
      */
     public function destroy(Trade $trade)
     { 
+        foreach($trade->agents as $agent){
+            $trade->agents()->detach($agent->id);
+        }
+
         $trade->delete();
+
         return redirect(route('homepage'))->with('tradeDeleted', "The ad has been deleted.");
     }
 }
