@@ -46,6 +46,7 @@ class SellController extends Controller
             'description' => $request->description,
             'user_id' => Auth::user()->id,
         ]);
+        $sell->agents()->attach($request->agent);
         return redirect(route('homepage'))->with('sellCreated', "You have successfully posted the advertisement.");
     }
 
@@ -54,7 +55,9 @@ class SellController extends Controller
      */
     public function show(Sell $sell)
     {
-        return view('sell.show', compact('sell'));
+        $agent = Agent::all();
+
+        return view('sell.show', compact('sell', 'agent'));
     }
 
     /**
@@ -65,7 +68,9 @@ class SellController extends Controller
         if($sell->user_id != Auth::id()){
             return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
         }
-        return view('sell.edit', compact('sell'));
+        $agents = Agent::all();
+
+        return view('sell.edit', compact('sell', 'agents'));
     }
 
     /**
@@ -87,7 +92,9 @@ class SellController extends Controller
             ]);
 
         }
+        $sell->agents()->attach($request->agent);
 
+        $sell->agents()->attach($request->agent);
         return redirect(route('homepage'))->with('sellUpdated', "The announcement has been updated.");
     }
 
@@ -96,7 +103,13 @@ class SellController extends Controller
      */
     public function destroy(Sell $sell)
     {
+
+        foreach($sell->agents as $agent){
+            $sell->agents()->detach($agent->id);
+        }
+
         $sell->delete();
+        
         return redirect(route('homepage'))->with('sellDeleted', "The announcement has been deleted.");
     }
 }

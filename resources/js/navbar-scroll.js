@@ -8,6 +8,7 @@ window.addEventListener('scroll', function() {
   
   if (window.scrollY > 0) {
     navbar.classList.add('bg-white');
+    navbar.classList.add('navbar-border');
     navbar.classList.remove('bg-transparent');
     navbar.classList.add('navbar-light');
     navbar.classList.remove('navbar-dark');
@@ -26,6 +27,7 @@ window.addEventListener('scroll', function() {
     });
   } else {
     navbar.classList.remove('bg-white');
+    navbar.classList.remove('navbar-border');
     navbar.classList.add('bg-transparent');
     navbar.classList.remove('navbar-light');
     navbar.classList.add('navbar-dark');

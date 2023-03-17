@@ -36,15 +36,15 @@
         @if(count(Auth::user()->trades))
         @foreach(Auth::user()->trades as $trade)
         <div class="col-12 col-md-4 pb-5">
-            <div class="card">
+            <div class="card shadow">
                 @if(!$trade->cover)
                 <img src="https://picsum.photos/300/200" class="img-card" alt="...">
                 @else
-                <img src="{{Storage::url($trade->cover)}}" class="img-card" alt="...">
+                <img src="{{Storage::url($trade->cover)}}" class="img-fluid" alt="...">
                 @endif
                 <div class="card-body p-2">
-                    <h3>{{$trade->title}}</h3>
-                    <h3>{{$trade->producer}}</h3>
+                <h3>Name:</h3><p>{{$trade->name}}</p>
+                    <h3>Price:</h3><p>{{$trade->price}} €</p>
                     <form action="{{route('trade.show', $trade)}}" method="GET" class="d-inline-block">
                         @csrf
                         <button type="submit" class="btn btn-outline-primary">View</button>
@@ -72,22 +72,22 @@
 <div class="container py-5">
     <div class="row">
         <div class="col-12 col-md-4 fw-bold fs-5 py-5">
-            <h3>Your Rent Ads</h3>
+            <h3>Your Sale Ads</h3>
         </div>
     </div>
     <div class="row justify-content-center">
         @if(count(Auth::user()->sells))
         @foreach(Auth::user()->sells as $sell)
         <div class="col-12 col-md-4 pb-5">
-            <div class="card">
+            <div class="card shadow">
                 @if(!$sell->cover)
                 <img src="https://picsum.photos/300/200" class="img-card" alt="...">
                 @else
-                <img src="{{Storage::url($sell->cover)}}" class="img-card" alt="...">
+                <img src="{{Storage::url($sell->cover)}}" class="img-fluid" alt="...">
                 @endif
                 <div class="card-body p-2">
-                    <h3>{{$sell->name}}</h3>
-                    <h3>{{$sell->created_at}}</h3>
+                    <h3>Name:</h3><p>{{$sell->name}}</p>
+                    <h3>Price:</h3><p>{{$sell->price}} €</p>
                     <form action="{{route('sell.show', $sell)}}" method="GET" class="d-inline-block">
                         @csrf
                         <button type="submit" class="btn btn-outline-primary">View</button>
@@ -124,30 +124,60 @@
                 @if(count(Auth::user()->agents))
                 @foreach(Auth::user()->agents as $agent)
                 <div class="col-12 col-md-4 pb-5">
-                    <div class="card">
+                    <div class="card shadow">
                         @if(!$agent->cover)
                         <img src="https://picsum.photos/300/200" class="img-card" alt="...">
                         @else
-                        <img src="{{Storage::url($agent->cover)}}" class="img-card" alt="...">
+                        <img src="{{Storage::url($agent->cover)}}" class="img-fluid" alt="...">
                         @endif
                         <div class="card-body p-2">
-                            <h3>{{$agent->name}}</h3>
-                            <h3>{{$agent->email}}</h3>
-                            <form action="{{route('agent.show', $agent)}}" method="GET" class="d-inline-block">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-primary">View</button>
-                            </form>
-                            @if(Auth::user() && Auth::id() == $agent->user_id)
-                            <a href="{{ route('agent.edit', $agent) }}" class="btn btn-outline-dark">Edit</a>
+                            <h3>Name:</h3><p>{{$agent->name}}</p>
+                            <h3>Email:</h3><p>{{$agent->email}}</p>
+                            <div>
+
+                                <!-- Many to Many Agent-Rent -->
+                                <h2>Rent management</h2>
+                                @foreach($agent->trades as $trade)
+                                <div class="d-flex justify-content-between border-bottom">
+                                    <p class="my-1">{{$trade->name}}</p>
+                                    <form method="POST" action="{{route('trade.destroy', compact('trade'))}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn text-danger">Cancel</button>
+                                    </form>
+                                </div>
+                                @endforeach
+                                </div>
+
+                                <!-- Many to Many Agent-Sale -->
+                                <h2>Sale Management</h2>
+                                @foreach($agent->sells as $sell)
+                                <div class="d-flex justify-content-between border-bottom">
+                                    <p class="my-1">{{$sell->name}}</p>
+                                    <form method="POST" action="{{route('sell.destroy', compact('sell'))}}">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit" class="btn text-danger">Cancel</button>
+                                    </form>
+                                </div>
+                                @endforeach
+                                
+                                <!-- Buttons -->
+                                <form action="{{route('agent.show', $agent)}}" method="GET" class="d-inline-block">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-primary mt-1">View</button>
+                                </form>
+                                @if(Auth::user() && Auth::id() == $agent->user_id)
+                                <a href="{{ route('agent.edit', $agent) }}" class="btn btn-outline-dark mt-1">Edit</a>
                                 <form action="{{ route('agent.destroy', $agent) }}" method="POST" class="d-inline-block">
                                     @csrf
                                     @method('delete')
-                                    <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                    <button type="submit" class="btn btn-outline-danger mt-1">Delete</button>
                                 </form>
+                            </div>
                             @endif
                         </div>
                     </div>
-                </div>
                 @endforeach
                 @else
                     <div class="col-12 ms-5 ps-5">

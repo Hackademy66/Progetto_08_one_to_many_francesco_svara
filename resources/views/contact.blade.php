@@ -40,7 +40,7 @@
                 <label for="message">Messagge</label>
                 <textarea type="text" name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Write here..."></textarea>
               </div>
-              <button type="submit" class="btn btn-light mt-5">Send</button>
+              <button type="submit" class="btn btn-light mt-5">Submit</button>
             </form>
         </div>
     </div>

@@ -2,7 +2,7 @@
 <div class="container-fluid py-5 sale-page">
     <div class="row py-5">
         <div class="col-8 text-center py-5 text-white mx-auto">
-            <h1 class="display-1 text-bold py-5">Agent</h1>
+            <h1 class="display-1 text-bold py-5">Agents</h1>
             <p></p>
         </div>
         <div class="col-12 text-center pt-5 scrollArrow chevron">
@@ -25,7 +25,7 @@
     <div class="row py-5">
         @if(count($agents))
             @foreach($agents as $agent)
-            <div class="col-12 col-md-6 col-lg-4 mb-5">
+            <div class="col-12 col-md-6 col-lg-3 mb-5">
                 <a class="text-decoration-none" href="{{route('agent.show', $agent)}}">
                     <x-card-agent
                         name="{{$agent->name}}"

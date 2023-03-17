@@ -42,21 +42,21 @@
                     <input type="text" name="email" class="form-control" id="email" placeholder="Inserire prezzo" value="{{$agent->email}}">
                 </div>
                 <div class="mb-3">
+                    <label for="trade" class="form-label">Available Rent Homes</label>
+                    <select name="trade" id="trade" class="form-control" multiple>
+                        @foreach($trades as $trade)
+                        <option value="{{$trade->id}}">
+                            Name: {{$trade->name}} - Price: {{$trade->price}} €
+                        </option>
+                        @endforeach      
+                    </select>         
+                </div>
+                <div class="mb-3">
                     <label for="sell" class="form-label">Available Sale Homes</label>
                     <select name="sell" id="sell" class="form-control" multiple>
                         @foreach($sells as $sell)
                             <option value="{{$sell->id}}">
                             Name: {{$sell->name}} - Price: {{$sell->price}} €
-                            </option>
-                        @endforeach      
-                    </select>         
-                </div>
-                <div class="mb-3">
-                    <label for="trade" class="form-label">Available Rent Homes</label>
-                    <select name="trade" id="trade" class="form-control" multiple>
-                        @foreach($trades as $trade)
-                            <option value="{{$trade->id}}">
-                                Name: {{$trade->name}} - Price: {{$trade->price}} €
                             </option>
                         @endforeach      
                     </select>         

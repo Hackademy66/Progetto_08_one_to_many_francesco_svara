@@ -51,7 +51,10 @@ class AgentController extends Controller
      */
     public function show(Agent $agent)
     {
-        return view('agent.show', compact('agent'));
+        $sell = Sell::all();
+        $trade = Trade::all();
+
+        return view('agent.show', compact('agent', 'sell', 'trade'));
     }
 
     /**
@@ -97,11 +100,11 @@ class AgentController extends Controller
     public function destroy(Agent $agent)
     {
         foreach($agent->sells as $sell){
-            $agent->sells()->detach($sell->id);
+            $agent->sells()->detach($sell_id);
         }
 
         foreach($agent->trades as $trade){
-            $agent->trades()->detach($trade->id);
+            $agent->trades()->detach($trade_id);
         }
 
         $agent->delete();

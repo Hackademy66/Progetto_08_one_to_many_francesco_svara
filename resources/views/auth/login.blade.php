@@ -37,7 +37,7 @@
                             Remember me
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-light mt-5">Send</button>
+                    <button type="submit" class="btn btn-light mt-5">Submit</button>
                 </form>
             </div>
         </div>
