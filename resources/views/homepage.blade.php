@@ -1,4 +1,9 @@
 <x-layout>
+  <div class="">
+    <button class="btn btn-primary fixed-top menu__btn" href="#">Menu</button>
+  </div> 
+  <x-navResponsive />
+
 <div class="container-fluid px-0 home">
   
   <x-messages />

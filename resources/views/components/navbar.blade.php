@@ -44,7 +44,7 @@
           <a class="nav-link active" aria-current="page" href="{{route('contact')}}">Contact Us</a>
         </li>
       </ul>
-        <div class="collapse navbar-collapse justify-content-end" id="navRight">
+      <div class="collapse navbar-collapse justify-content-end" id="navRight">
               <!-- Sezione a destra della navbar, all'interno di un div separato -->
           <div class="d-flex align-items-center">
             @auth
@@ -56,8 +56,7 @@
             <a id="myButton4" class="btn btn-sm btn-outline-light btn-log" href="{{route('login')}}"><i class="bi bi-person-fill"></i>Login</a>
             @endAuth
           </div>
-        </div>
-      </ul>
+      </div>
     </div>
   </div>
 </nav>

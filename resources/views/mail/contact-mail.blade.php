@@ -62,15 +62,15 @@
 <body>
     <div class="container">
     
-    <h1>Ciao {{$user_data['name']}}!</h1>
-    <h2> Grazie per averci contattato.</h2>
-    <p>Ti risponderemo il prima possibile.</p>
+    <h1>Hi {{$user_data['name']}}!</h1>
+    <h2>We will respond to you as soon as possible.</h2>
+    <p>Thank you for contacting us. We have received your message and we will get back to you as soon as possible.</p>
 
-    <p>Questi sono i dati che hai inserito:</p>
+    <p>These are the data you have entered:</p>
     <ul>
-        <li><b>Nome: </b>{{$user_data['name']}}</li>
+        <li><b>Name: </b>{{$user_data['name']}}</li>
         <li><b>Email: </b>{{$user_data['email']}}</li>
-        <li><b>Messaggio: </b>{{$user_data['message']}}</li>
+        <li><b>Message: </b>{{$user_data['message']}}</li>
     </ul>
     </div>
 </body>

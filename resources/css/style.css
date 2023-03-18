@@ -171,3 +171,21 @@ p a h3 div {
         display: none;
     }
 }
+
+@media screen and (min-width: 992px) {
+
+    .menu__btn {
+        opacity: 0;
+    }
+    
+}
+
+@media screen and (max-width: 991px) {
+
+    .menu__btn {
+        text-decoration: none;
+        color: white;
+        margin-top: 25px;
+    }
+    
+}

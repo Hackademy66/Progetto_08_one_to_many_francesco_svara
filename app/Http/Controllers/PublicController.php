@@ -39,9 +39,9 @@ class PublicController extends Controller
         try {
             Mail::to($email)->send(new ContactMail($user_data));
         } catch(\Exception $e) {
-            return redirect()->back()->with('emailError', "C'è stato un problema con l'invio della mail. Riprova più tardi.");
+            return redirect()->back()->with('emailError', "We encountered an issue while sending the email. Please try again later.");
         }
         
-        return redirect(route('contact'))->with('status', 'Email inviata! Grazie!');
+        return redirect(route('contact'))->with('status', 'Email sent!');
     }
 }
