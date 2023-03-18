@@ -24,9 +24,9 @@ class AgentController extends Controller
      */
     public function create()
     {
-        if($agent->user_id != Auth::id()){
-            return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
-        }
+        // if($agent->user_id != Auth::id()){
+        //     return redirect(route('homepage'))->with('accessDenied', 'You are not authorized to perform this operation.');
+        // }
         $sells = Sell::all();
         $trades = Trade::all();
         
@@ -103,11 +103,11 @@ class AgentController extends Controller
     public function destroy(Agent $agent)
     {
         foreach($agent->sells as $sell){
-            $agent->sells()->detach($sell_id);
+            $agent->sells()->detach($sell->id);
         }
 
         foreach($agent->trades as $trade){
-            $agent->trades()->detach($trade_id);
+            $agent->trades()->detach($trade->id);
         }
 
         $agent->delete();
